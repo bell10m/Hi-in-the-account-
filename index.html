@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeIl Mohammad | Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #00d4ff;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--dark-bg); color: var(--text-main); margin: 0; }
+
+        .container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: var(--dark-bg); }
+
+        /* الهيدر العلوي */
+        .header { padding: 30px 20px 10px; text-align: center; }
+        .header h1 { font-size: 24px; color: var(--primary-blue); margin: 0; }
+
+        /* أزرار التنقل العلوية - ثابتة فوق */
+        .top-nav { 
+            display: flex; 
+            justify-content: center; 
+            gap: 8px; 
+            padding: 15px 10px; 
+            background: var(--dark-bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .nav-btn { 
+            flex: 1;
+            padding: 10px 5px; 
+            border: 1px solid #334155; 
+            background: var(--card-bg); 
+            color: #94a3b8; 
+            border-radius: 10px; 
+            font-size: 11px; 
+            font-weight: bold; 
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-btn.active { 
+            background: var(--primary-blue); 
+            color: #000; 
+            border-color: var(--primary-blue);
+        }
+
+        /* المحتوى */
+        .content-section { display: none; padding: 20px; animation: fadeIn 0.5s ease; }
+        .content-section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .project-card { background: var(--card-bg); border-radius: 20px; padding: 20px; margin-bottom: 20px; text-align: center; border: 1px solid #334155; }
+        .btn-link { display: block; background: var(--primary-blue); color: #000; text-decoration: none; padding: 12px; border-radius: 12px; font-weight: bold; margin-top: 15px; }
+
+        .bio-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary-blue); object-fit: cover; margin: 0 auto 15px; display: block; }
+        .contact-btn { background: #25d366; color: white; padding: 15px; border-radius: 15px; font-weight: bold; display: block; text-decoration: none; margin-top: 20px; text-align: center; font-size: 18px; }
+
+        .footer { text-align: center; font-size: 10px; opacity: 0.4; padding: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>BeIl Mohammad 👩🏻‍💻</h1>
+    </div>
+
+    <nav class="top-nav">
+        <button class="nav-btn active" onclick="showTab('hamzah', this)">صفحة حمزة</button>
+        <button class="nav-btn" onclick="showTab('yalla', this)">صفحة يلا نسافر</button>
+        <button class="nav-btn" onclick="showTab('about', this)">نبذة عن عملنا</button>
+    </nav>
+
+    <div id="hamzah" class="content-section active">
+        <div class="project-card">
+            <i class="fas fa-user-circle" style="font-size: 40px; color: var(--primary-blue);"></i>
+            <h3>المهندس حمزة الموتي</h3>
+            <p>مشروع بروفايل شخصي متكامل للأعمال الهندسية.</p>
+            <a href="https://bell10m.github.io/alhamzah/" class="btn-link">زيارة الموقع</a>
+        </div>
+    </div>
+
+    <div id="yalla" class="content-section">
+        <div class="project-card">
+            <i class="fas fa-plane" style="font-size: 40px; color: var(--primary-blue);"></i>
+            <h3>مكتب يلا نسافر</h3>
+            <p>منصة رقمية لخدمات التأشيرات والرحلات الدولية.</p>
+            <a href="https://bell10m.github.io/yallanusafir/" class="btn-link">زيارة الموقع</a>
+        </div>
+    </div>
+
+    <div id="about" class="content-section">
+        <img src="b.jpg" class="bio-img">
+        <h3 style="text-align: center;">مرحباً بكم في عالمنا الرقمي</h3>
+        <p style="text-align: center; line-height: 1.6;">نحن متخصصون في تصميم المواقع الشخصية والتجارية وبرمجة بطاقات الـ NFC الذكية بأحدث التقنيات.</p>
+        
+        <div class="project-card">
+            <h4>اطلب موقعك الآن</h4>
+            <p>دقة في الإنجاز، سرعة في التنفيذ، ودعم فني مستمر.</p>
+        </div>
+
+        <a href="tel:770605053" class="contact-btn">
+            <i class="fas fa-phone-alt"></i> تواصلوا معنا: 770605053
+        </a>
+    </div>
+
+    <div class="footer">
+        Developed by: BeIl Mohammad 👩🏻‍💻
+    </div>
+</div>
+
+<script>
+    function showTab(tabId, btnElement) {
+        // إخفاء كافة الأقسام
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // إظهار القسم المختار
+        document.getElementById(tabId).classList.add('active');
+        
+        // تحديث حالة الأزرار
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        btnElement.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
